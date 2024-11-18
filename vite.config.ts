@@ -5,10 +5,38 @@ import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import { optimizeCssModules } from 'vite-plugin-optimize-css-modules';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
+const futureFlags = {
+  v3_lazyRouteDiscovery: true,
+  v3_singleFetch: true,
+  v3_fetcherPersist: true,
+  v3_relativeSplatPath: true,
+  v3_throwAbortReason: true,
+};
+
 export default defineConfig((config) => {
   return {
     build: {
       target: 'esnext',
+      chunkSizeWarningLimit: 1000,
+      cssCodeSplit: true,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              if (id.includes('@remix-run')) {
+                return 'remix';
+              }
+              return 'vendor';
+            }
+          },
+          assetFileNames: (assetInfo) => {
+            if (assetInfo.name?.endsWith('.css')) {
+              return 'assets/css/[name]-[hash][extname]';
+            }
+            return 'assets/[name]-[hash][extname]';
+          },
+        },
+      },
     },
     plugins: [
       nodePolyfills({
@@ -16,11 +44,7 @@ export default defineConfig((config) => {
       }),
       config.mode !== 'test' && remixCloudflareDevProxy(),
       remixVitePlugin({
-        future: {
-          v3_fetcherPersist: true,
-          v3_relativeSplatPath: true,
-          v3_throwAbortReason: true,
-        },
+        future: futureFlags,
       }),
       UnoCSS(),
       tsconfigPaths(),
@@ -29,11 +53,29 @@ export default defineConfig((config) => {
     ],
     envPrefix:["VITE_","OPENAI_LIKE_API_","OLLAMA_API_BASE_URL","LMSTUDIO_API_BASE_URL"],
     css: {
+      modules: {
+        localsConvention: 'camelCase',
+        generateScopedName: config.mode === 'production' 
+          ? '[hash:base64:8]' 
+          : '[name]__[local]',
+      },
       preprocessorOptions: {
         scss: {
           api: 'modern-compiler',
+          charset: false,
+          sourceMap: true,
+          includePaths: ['./app/styles'],
         },
       },
+      postcss: {
+        plugins: [
+          // Add any necessary PostCSS plugins here
+        ],
+      },
+      devSourcemap: true,
+    },
+    optimizeDeps: {
+      exclude: ['virtual:uno.css'],
     },
   };
 });
