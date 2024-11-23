@@ -14,12 +14,14 @@ services:
       # No strictly neded but serving as hints for Coolify
       - PORT=5173
       - GROQ_API_KEY=${GROQ_API_KEY}
+      - HuggingFace_API_KEY=${HuggingFace_API_KEY}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - OPEN_ROUTER_API_KEY=${OPEN_ROUTER_API_KEY}
       - GOOGLE_GENERATIVE_AI_API_KEY=${GOOGLE_GENERATIVE_AI_API_KEY}
       - OLLAMA_API_BASE_URL=${OLLAMA_API_BASE_URL}
       - VITE_LOG_LEVEL=${VITE_LOG_LEVEL:-debug}
+      - DEFAULT_NUM_CTX=${DEFAULT_NUM_CTX:-32768}
       - RUNNING_IN_DOCKER=true
     extra_hosts:
       - "host.docker.internal:host-gateway"      
@@ -40,12 +42,14 @@ services:
       - WATCHPACK_POLLING=true  
       - PORT=5173
       - GROQ_API_KEY=${GROQ_API_KEY}
+      - HuggingFace_API_KEY=${HuggingFace_API_KEY}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - OPEN_ROUTER_API_KEY=${OPEN_ROUTER_API_KEY}
       - GOOGLE_GENERATIVE_AI_API_KEY=${GOOGLE_GENERATIVE_AI_API_KEY}
       - OLLAMA_API_BASE_URL=${OLLAMA_API_BASE_URL}
       - VITE_LOG_LEVEL=${VITE_LOG_LEVEL:-debug}
+      - DEFAULT_NUM_CTX=${DEFAULT_NUM_CTX:-32768}
       - RUNNING_IN_DOCKER=true
     extra_hosts:
       - "host.docker.internal:host-gateway"      
