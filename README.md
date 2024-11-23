@@ -1,12 +1,16 @@
 [![Bolt.new: AI-Powered Full-Stack Web Development in the Browser](./public/social_preview_index.jpg)](https://bolt.new)
 
-# It's Bolt.new but Local by Leo Gopal
+# Bolt.new Fork by Cole Medin - oTToDev
 
-This fork of Bolt.new allows you to choose the LLM that you use for each prompt! Currently, you can use OpenAI, Anthropic, Ollama, OpenRouter, Gemini, or Groq models - and it is easily extended to use any other model supported by the Vercel AI SDK! See the instructions below for running this locally and extending it to include more models.
+This fork of Bolt.new (oTToDev) allows you to choose the LLM that you use for each prompt! Currently, you can use OpenAI, Anthropic, Ollama, OpenRouter, Gemini, LMStudio, Mistral, xAI, HuggingFace, DeepSeek, or Groq models - and it is easily extended to use any other model supported by the Vercel AI SDK! See the instructions below for running this locally and extending it to include more models.
+
+Join the community for oTToDev!
+
+https://thinktank.ottomator.ai
 
 # Requested Additions to this Fork - Feel Free to Contribute!!
 
-- ✅ OpenRouter Integration (@coleam00)
+- ✅ OpenRouter Integration (@leogopal)
 - ✅ Gemini Integration (@jonathands)
 - ✅ Autogenerate Ollama models from what is downloaded (@yunatamos)
 - ✅ Filter models by provider (@jasonm23)
@@ -20,21 +24,24 @@ This fork of Bolt.new allows you to choose the LLM that you use for each prompt!
 - ✅ Publish projects directly to GitHub (@goncaloalves)
 - ✅ Ability to enter API keys in the UI (@ali00209)
 - ✅ xAI Grok Beta Integration (@milutinke)
+- ✅ LM Studio Integration (@karrot0)
+- ✅ HuggingFace Integration (@ahsan3219)
+- ✅ Bolt terminal to see the output of LLM run commands (@thecodacus)
+- ✅ Streaming of code output (@thecodacus)
+- ✅ Ability to revert code to earlier version (@wonderwhy-er)
 - ⬜ **HIGH PRIORITY** - Prevent Bolt from rewriting files as often (file locking and diffs)
 - ⬜ **HIGH PRIORITY** - Better prompting for smaller LLMs (code window sometimes doesn't start)
-- ⬜ **HIGH PRIORITY** Load local projects into the app
+- ⬜ **HIGH PRIORITY** - Load local projects into the app
 - ⬜ **HIGH PRIORITY** - Attach images to prompts
 - ⬜ **HIGH PRIORITY** - Run agents in the backend as opposed to a single model call
 - ⬜ Mobile friendly
-- ⬜ LM Studio Integration
 - ⬜ Together Integration
 - ⬜ Azure Open AI API Integration
-- ⬜ HuggingFace Integration
 - ⬜ Perplexity Integration
 - ⬜ Vertex AI Integration
-- ⬜ Cohere Integration
+- ✅ Cohere Integration (@hasanraiyan)
+- ✅ Dynamic model max token length (@hasanraiyan)
 - ⬜ Deploy directly to Vercel/Netlify/other similar platforms
-- ⬜ Ability to revert code to earlier version
 - ⬜ Prompt caching
 - ⬜ Better prompt enhancing
 - ⬜ Have LLM plan the project in a MD file for better results/transparency
@@ -176,7 +183,7 @@ pnpm install
 If you get an error saying "command not found: pnpm" or similar, then that means pnpm isn't installed. You can install it via this:
 
 ```
-
+sudo npm install -g pnpm
 ```
 
 2. Start the application with the command:
